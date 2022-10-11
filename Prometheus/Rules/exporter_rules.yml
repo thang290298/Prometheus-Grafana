@@ -2,7 +2,7 @@ groups:
 - name: Instances
   rules:
   # Node down
-  - alert: Node service down
+  - alert: Service down
     expr: up == 0
     for: 1m
     labels:
