@@ -1,0 +1,26 @@
+global:
+  resolve_timeout: 1m
+templates:
+- '/etc/alertmanager/*.tmpl'
+route:
+  group_by: ['alertname', 'priority']
+  group_wait: 3s
+  group_interval: 5s
+  repeat_interval: 2h
+  receiver: 'notifications'
+receivers:
+- name: notifications
+  webhook_configs:
+  - url: 'http://10.193.0.111:9119/alert'
+    send_resolved: true
+    http_config:
+      basic_auth:
+        username: 'vnptit'
+        password: 'Vnpt@!2021'
+###
+inhibit_rules:
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname', 'dev', 'instance']
