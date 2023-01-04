@@ -1,0 +1,3 @@
+---
+- name: Install node_exporter
+  shell: docker run -d --net="host" --name=node-exporter --pid="host" -v "/:/host:ro,rslave" -v /etc/timezone:/etc/timezone:ro -v /etc/localtime:/etc/localtime:ro  -e "--path.rootfs=/host" -p 9100 quay.io/prometheus/node-exporter:latest

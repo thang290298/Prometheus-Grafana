@@ -1,0 +1,5 @@
+---
+- hosts: node_exporter
+  become: true
+  roles:
+      - node_exporters

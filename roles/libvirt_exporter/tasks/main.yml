@@ -1,0 +1,3 @@
+---
+- name: Install libvirt_exporter
+  shell: docker run -d --net="host" --name=libvirt-exporter -p 9177:9177 -v /var/run/libvirt:/var/run/libvirt -v /etc/timezone:/etc/timezone:ro -v /etc/localtime:/etc/localtime:ro alekseizakharov/libvirt-exporter:latest

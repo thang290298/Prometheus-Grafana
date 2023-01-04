@@ -1,0 +1,5 @@
+---
+- hosts: libvirt_exporter
+  become: true
+  roles:
+      - libvirt_exporter
